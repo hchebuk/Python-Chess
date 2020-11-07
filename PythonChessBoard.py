@@ -4,18 +4,24 @@ Author: Harrison Chebuk
 Notes: a chess board is 8*8 and 64 squares total
 """
 
-import pygame
-from pygame.locals import *
+
+class GameTracker:
+    def __init__(self):
+        self.board = [
+            ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],
+            ["bp", "bp", "bp", "bp", "bp", "bp", "bp", "bp"],
+            [None, None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None],
+            ["wp", "wp", "wp", "wp", "wp", "wp", "wp", "wp"],
+            ["wR", "wN", "wB", "wK", "wQ", "wB", "wN", "wR"]
+        ]  # The starting board positions, from white perspective. R = rook, p = pawn, Q = queen and so on. color lead
 
 
-class ChessMain:
-    tilesize = 100
-
-    def __init__(self, width=640, height=480):
-        white, black = (255, 255, 255), (0, 0, 0)
-        pygame.init()
-        self.window = pygame.display.set_mode((width, height))
-
-
+class MovePiece:
+    """A class used to implement the drag and drop"""
+    def __init__(self):
+        pass
 
 
