@@ -16,7 +16,7 @@ width = 512 # pixel size of window
 height = 512
 tileSize = width // 8 # a chess board is 8x8, we calculate pixel size of squares by this
 img = {}  # dictionary of our images
-brown, light_brown = (102, 51, 0), (153, 102, 51)  # hex values for white and black
+brown, light_brown = (102, 51, 0), (153, 102, 51)  # RGB values for brown and light brown, to be used on tiles
 
 
 def imageLoader():
