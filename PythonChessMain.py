@@ -50,15 +50,24 @@ def main():
     running = True
     board.mixer.music.load("{}/music/music.mp3".format(THIS_FOLDER))  # loading in the jams
     board.mixer.music.play(loops=-1)
+    curSquare = ()  # (row, col)
+    clickTrack = []  # [curSquare, curSquare]
     while running:  # our game loop
 
         for i in board.event.get():
             if i.type == board.QUIT:  # running loop ends
                 running = False
             elif i.type == board.MOUSEBUTTONDOWN:
-                mouseLocation = board.mouse.get_pos()  # the location of the mouse on the screen
-                col = mouseLocation[0]//tileSize
+                mouseLocation = board.mouse.get_pos()  # the location of the mouse on the screen x, y
                 row = mouseLocation[1]//tileSize
+                col = mouseLocation[0] // tileSize
+                curSquare = (row, col)
+                clickTrack.append(curSquare)
+                if len(clickTrack) == 2:  # second click occurred
+                    move = MovePiece(clickTrack[0], clickTrack[1], tracker.board)
+                    tracker.makeMove(move)
+                    curSquare = ()  # reset the click
+                    clickTrack.clear()
         drawBoard(screen, tracker.board) # update our moves
         clock.tick(60)  # FPS per tick of gametime, use minecraft commands to remember lol
         board.display.flip()  # updates the contents of the entire display
